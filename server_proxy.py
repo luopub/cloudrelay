@@ -9,6 +9,7 @@ from typing import Optional
 
 CLOUD_SERVER_IP = os.environ.get('CLOUD_SERVER_IP') or '127.0.0.1'
 CLOUD_SERVER_PORT = int(os.environ.get('CLOUD_SERVER_PORT') or 11000)
+LOCAL_SERVER_PORT = int(os.environ.get('LOCAL_SERVER_PORT') or 10999)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -129,7 +130,7 @@ class ServerProxy:
 async def main():
     # 配置
     CLOUD_SERVER_URL = f"ws://{CLOUD_SERVER_IP}:{CLOUD_SERVER_PORT}"  # 替换为实际的云服务器IP
-    TARGET_SERVER = "http://localhost:10999"  # 内网服务器地址
+    TARGET_SERVER = f"http://localhost:{LOCAL_SERVER_PORT}"  # 内网服务器地址
     
     proxy = ServerProxy(CLOUD_SERVER_URL, TARGET_SERVER)
     await proxy.run()
