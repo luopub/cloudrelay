@@ -1,1 +1,1 @@
-git push https://github.com/luopub/cloudrelay.git
+git pull https://github.com/luopub/cloudrelay.git
